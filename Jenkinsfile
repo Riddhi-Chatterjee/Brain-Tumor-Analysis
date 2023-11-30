@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'pip install --upgrade pip -r requirements.txt' 
+                sh 'pip install --upgrade -r requirements.txt' 
                 sh 'python3 download_models.py'
             }
         }
