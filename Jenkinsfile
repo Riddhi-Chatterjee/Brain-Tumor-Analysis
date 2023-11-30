@@ -15,5 +15,10 @@ pipeline {
                 sh 'tar czf BrainTumorAnalysis.tar.gz Brain_Tumor_Classification static templates backend.py download_models.py frontend.py Jenkinsfile requirements.txt' //Creating a compressed archive of the required files and directories
             }
         }
+        stage('Test') {
+            steps {
+                
+            }
+        }
     }
 }
