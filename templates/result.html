@@ -1,0 +1,21 @@
+{% extends "layout.html"%}
+{% block title %}
+Prediction - Brain Tumor Analysis
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+    <header class="text-white text-center">
+        <h1 class="display-4">Brain Tumor Analysis</h1>
+    </header>
+
+    <header class="Brain-Tumor-Classification text-center">
+        {% if predictions %}
+        <h1 class="display-4 font-weight-bold" style="color:black; font-size:29px;">{{predictions}}</h1>
+        {% else %}
+        <h1 class="display-4 font-weight-bold" style="color:black; font-size:29px;">{{err}}</h1>
+        {% endif %}
+    </header>
+</div>
+{% endblock %}
