@@ -9,7 +9,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo hello' 
+                sh 'pip3 install -r requirements.txt' 
+                sh 'python3 download_models.py'
             }
         }
     }
