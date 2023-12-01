@@ -1,5 +1,6 @@
 import unittest
 import os
+import random
 import numpy as np
 import pandas as pd
 import torch
@@ -8,15 +9,20 @@ from PIL import Image
 from torchvision import datasets, models, transforms
 from classifier import classify_image
 
-PATH = "./test_images"
+PATH = "./Brain_Tumor_Classification/test_images"
 test_images = {}
 for dir in os.listdir(PATH):
+    if dir == '.DS_Store':
+        continue
     for file in os.listdir(os.path.join(PATH, dir)):
+        if file == '.DS_Store':
+            continue
         full_path = os.path.join(os.path.join(PATH, dir), file)
         key = file.split(".")[0]
         test_images[key] = full_path
 
-test_images_keys = test_images.keys()
+test_images_keys = list(test_images.keys())
+random.shuffle(test_images_keys)
 
 label_dict = {
     'gl' : 'glioma',
@@ -35,8 +41,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test2(self):        
         index = 1
@@ -45,8 +52,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test3(self):        
         index = 2
@@ -55,8 +63,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test4(self):        
         index = 3
@@ -65,8 +74,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test5(self):        
         index = 4
@@ -75,8 +85,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test6(self):        
         index = 5
@@ -85,8 +96,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test7(self):        
         index = 6
@@ -95,8 +107,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test8(self):        
         index = 7
@@ -105,8 +118,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test9(self):        
         index = 8
@@ -115,8 +129,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test10(self):        
         index = 9
@@ -125,8 +140,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test11(self):        
         index = 10
@@ -135,8 +151,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test12(self):        
         index = 11
@@ -145,8 +162,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test13(self):        
         index = 12
@@ -155,8 +173,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test14(self):        
         index = 13
@@ -165,8 +184,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test15(self):        
         index = 14
@@ -175,8 +195,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test16(self):        
         index = 15
@@ -185,8 +206,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test17(self):        
         index = 16
@@ -195,8 +217,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test18(self):        
         index = 17
@@ -205,8 +228,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test19(self):        
         index = 18
@@ -215,8 +239,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test20(self):        
         index = 19
@@ -225,8 +250,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test21(self):        
         index = 20
@@ -235,8 +261,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test22(self):        
         index = 21
@@ -245,8 +272,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test23(self):        
         index = 22
@@ -255,8 +283,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test24(self):        
         index = 23
@@ -265,8 +294,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test25(self):        
         index = 24
@@ -275,8 +305,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test26(self):        
         index = 25
@@ -285,8 +316,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test27(self):        
         index = 26
@@ -295,8 +327,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test28(self):        
         index = 27
@@ -305,8 +338,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test29(self):        
         index = 28
@@ -315,8 +349,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test30(self):        
         index = 29
@@ -325,8 +360,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test31(self):        
         index = 30
@@ -335,8 +371,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
     
     def test32(self):        
         index = 31
@@ -345,8 +382,9 @@ class Tester(unittest.TestCase):
             result = 'notumor'
         else:
             result = result.split(": ")[1]
-        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
         self.assertEqual(result, label_dict[test_images_keys[index].split("_")[0].split("-")[1]])
+        print("\r", end="")
+        print("Image: "+test_images_keys[index]+" --> Predicted tumor type: "+result+"   Actual type: "+label_dict[test_images_keys[index].split("_")[0].split("-")[1]]+"   Result: "+("SUCCESS" if (result == label_dict[test_images_keys[index].split("_")[0].split("-")[1]]) else "FAILURE"))
 
 
 if __name__ =="__main__":
