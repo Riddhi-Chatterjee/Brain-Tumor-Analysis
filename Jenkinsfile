@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                
+                sh 'python3 Brain_Tumor_Classification/test.py'//Testing the classifier
             }
         }
     }

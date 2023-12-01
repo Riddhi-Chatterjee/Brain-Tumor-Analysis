@@ -43,7 +43,7 @@ def base_model_build():
     return vgg16
 
 model = base_model_build()
-model.load_state_dict(torch.load("Brain_Tumor_Classification/vgg16.pth", map_location=torch.device('cpu')))
+model.load_state_dict(torch.load("vgg16.pth", map_location=torch.device('cpu')))
 
 data_transform = transforms.Compose([transforms.ToTensor(),
                                      transforms.Resize((224,224))])

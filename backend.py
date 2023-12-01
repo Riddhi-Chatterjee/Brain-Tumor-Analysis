@@ -1,7 +1,6 @@
 import sys
 from flask import Flask, jsonify, request
-sys.path.append('./Brain_Tumor_Classification')
-from classifier import classify_image  # Import your machine learning module
+from Brain_Tumor_Classification.classifier import classify_image
 
 app = Flask(__name__)
 
