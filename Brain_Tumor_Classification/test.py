@@ -8,7 +8,7 @@ from PIL import Image
 from torchvision import datasets, models, transforms
 from classifier import classify_image
 
-PATH = "test_images"
+PATH = "./test_images"
 test_images = {}
 for dir in os.listdir(PATH):
     for file in os.listdir(os.path.join(PATH, dir)):
