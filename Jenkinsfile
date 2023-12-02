@@ -19,14 +19,14 @@ pipeline {
             steps {
                 sh 'pip3 install --upgrade pip' //Upgrading pip3
                 sh 'pip3 install -r requirements.txt' //Installing the required libraries
-                sh 'cd backend'
-                sh 'python3 download_models.py' //Downloading our models from google drive
+                sh '''cd backend
+                      python3 download_models.py''' //Downloading our models from google drive
             }
         }
         stage('Test') {
             steps {
-                sh 'cd backend'
-                sh 'python3 Brain_Tumor_Classification/test.py' //Testing the classifier 
+                sh '''cd backend
+                      python3 Brain_Tumor_Classification/test.py''' //Testing the classifier 
             }
         }
         stage('Build backend docker image') {
@@ -41,9 +41,7 @@ pipeline {
         }
         stage('Login to DockerHub') {
             steps {
-                script {
-                    sh '/usr/local/bin/docker login -u "riddhich" -p "rocker@43893"'
-                } 
+                sh '/usr/local/bin/docker login -u "riddhich" -p "rocker@43893"'
             }
         }
         stage('Push backend docker image to DockerHub') {
