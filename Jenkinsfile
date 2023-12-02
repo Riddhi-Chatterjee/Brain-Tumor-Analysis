@@ -17,20 +17,16 @@ pipeline {
         }
         stage('Build') {
             steps {
-                script {
-                    sh 'pip3 install --upgrade pip' //Upgrading pip3
-                    sh 'pip3 install -r requirements.txt' //Installing the required libraries
-                    sh 'cd backend'
-                    sh 'python3 download_models.py' //Downloading our models from google drive
-                }
+                sh 'pip3 install --upgrade pip' //Upgrading pip3
+                sh 'pip3 install -r requirements.txt' //Installing the required libraries
+                sh 'cd backend'
+                sh 'python3 download_models.py' //Downloading our models from google drive
             }
         }
         stage('Test') {
             steps {
-                script {
-                    sh 'cd backend'
-                    sh 'python3 Brain_Tumor_Classification/test.py' //Testing the classifier
-                }
+                sh 'cd backend'
+                sh 'python3 Brain_Tumor_Classification/test.py' //Testing the classifier 
             }
         }
         stage('Build backend docker image') {
