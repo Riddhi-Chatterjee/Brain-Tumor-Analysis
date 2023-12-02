@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Build backend docker image') {
 			steps {
-			    sh '/usr/local/bin/docker build -t '+registry+'-backend:latest backend/'
+			    sh '/usr/local/bin/docker build -t '+registry+':latest backend/'
 			}   
 		}
         stage('Build frontend docker image') {
