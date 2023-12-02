@@ -1,6 +1,14 @@
 pipeline {
     agent any 
 
+    environment {
+            CI = 'true'
+            registry = 'riddhich/brain-tumor-analysis'
+            DOCKERHUB_CRED = credentials('CRED_DOCKER')
+            registryCredential = 'CRED_DOCKER'
+            dockerimage = ''
+    }
+
     stages {
         stage('Git pull') {
             steps {
@@ -12,16 +20,50 @@ pipeline {
                 script {
                     sh 'pip3 install --upgrade pip' //Upgrading pip3
                     sh 'pip3 install -r requirements.txt' //Installing the required libraries
+                    sh 'cd backend'
                     sh 'python3 download_models.py' //Downloading our models from google drive
-                    sh 'tar czf BrainTumorAnalysis.tar.gz Brain_Tumor_Classification static templates backend.py download_models.py frontend.py Jenkinsfile requirements.txt' //Creating a compressed archive of the required files and directories
                 }
             }
         }
         stage('Test') {
             steps {
                 script {
-                    sh 'python3 Brain_Tumor_Classification/test.py'//Testing the classifier
+                    sh 'cd backend'
+                    sh 'python3 Brain_Tumor_Classification/test.py' //Testing the classifier
                 }
+            }
+        }
+        stage('Build backend docker image') {
+			steps {
+			    sh 'docker build -t '+registry+'-backend:latest backend/'
+			}   
+		}
+        stage('Build frontend docker image') {
+            steps {
+                sh 'docker build -t '+registry+'-frontend:latest frontend/'
+            }   
+        }
+        stage('Login to DockerHub') {
+            steps {
+                script {
+                    sh '/usr/local/bin/docker login -u "riddhich" -p "rocker@43893"'
+                } 
+            }
+        }
+        stage('Push backend docker image to DockerHub') {
+			steps {
+			    sh 'docker push '+registry+'-backend:latest'
+			}
+		}
+        stage('Push frontend docker image to DockerHub') {
+            steps {
+                sh 'docker push '+registry+'-frontend:latest'
+            }
+        }
+        stage('Free local space') {
+            steps {
+                sh 'docker rmi '+registry+'-backend:latest'
+                sh 'docker rmi '+registry+'-frontend:latest'
             }
         }
     }
