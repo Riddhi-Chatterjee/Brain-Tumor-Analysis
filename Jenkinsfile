@@ -31,23 +31,27 @@ pipeline {
         }
         stage('Build backend docker image') {
 			steps {
-			    sh '/usr/local/bin/docker build -t '+registry+'-backend:latest backend/'
-                try {
-                    sh '/usr/local/bin/docker rmi -f $(/usr/local/bin/docker images -a -q -f "dangling=true")'
-                } 
-                catch (Exception e) {
-                    echo "No images to delete... continuing with the pipeline..."
+                script {
+                    sh '/usr/local/bin/docker build -t '+registry+'-backend:latest backend/'
+                    try {
+                        sh '/usr/local/bin/docker rmi -f $(/usr/local/bin/docker images -a -q -f "dangling=true")'
+                    } 
+                    catch (Exception e) {
+                        echo "No images to delete... continuing with the pipeline..."
+                    }
                 }
 			}   
 		}
         stage('Build frontend docker image') {
             steps {
-                sh '/usr/local/bin/docker build -t '+registry+'-frontend:latest frontend/'
-                try {
-                    sh '/usr/local/bin/docker rmi -f $(/usr/local/bin/docker images -a -q -f "dangling=true")'
-                } 
-                catch (Exception e) {
-                    echo "No images to delete... continuing with the pipeline..."
+                script {
+                    sh '/usr/local/bin/docker build -t '+registry+'-frontend:latest frontend/'
+                    try {
+                        sh '/usr/local/bin/docker rmi -f $(/usr/local/bin/docker images -a -q -f "dangling=true")'
+                    } 
+                    catch (Exception e) {
+                        echo "No images to delete... continuing with the pipeline..."
+                    }
                 }
             }   
         }
