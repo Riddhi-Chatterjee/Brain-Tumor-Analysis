@@ -31,12 +31,12 @@ pipeline {
         }
         stage('Build backend docker image') {
 			steps {
-			    sh 'docker build -t '+registry+'-backend:latest backend/'
+			    sh '/usr/local/bin/docker build -t '+registry+'-backend:latest backend/'
 			}   
 		}
         stage('Build frontend docker image') {
             steps {
-                sh 'docker build -t '+registry+'-frontend:latest frontend/'
+                sh '/usr/local/bin/docker build -t '+registry+'-frontend:latest frontend/'
             }   
         }
         stage('Login to DockerHub') {
@@ -46,18 +46,18 @@ pipeline {
         }
         stage('Push backend docker image to DockerHub') {
 			steps {
-			    sh 'docker push '+registry+'-backend:latest'
+			    sh '/usr/local/bin/docker push '+registry+'-backend:latest'
 			}
 		}
         stage('Push frontend docker image to DockerHub') {
             steps {
-                sh 'docker push '+registry+'-frontend:latest'
+                sh '/usr/local/bin/docker push '+registry+'-frontend:latest'
             }
         }
         stage('Free local space') {
             steps {
-                sh 'docker rmi '+registry+'-backend:latest'
-                sh 'docker rmi '+registry+'-frontend:latest'
+                sh '/usr/local/bin/docker rmi '+registry+'-backend:latest'
+                sh '/usr/local/bin/docker rmi '+registry+'-frontend:latest'
             }
         }
     }
