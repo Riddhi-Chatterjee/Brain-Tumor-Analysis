@@ -32,11 +32,13 @@ pipeline {
         stage('Build backend docker image') {
 			steps {
 			    sh '/usr/local/bin/docker build -t '+registry+'-backend:latest backend/'
+                sh 'docker rmi -f $(docker images -a -q -f "dangling=true")'
 			}   
 		}
         stage('Build frontend docker image') {
             steps {
                 sh '/usr/local/bin/docker build -t '+registry+'-frontend:latest frontend/'
+                sh 'docker rmi -f $(docker images -a -q -f "dangling=true")'
             }   
         }
         stage('Login to DockerHub') {
@@ -56,8 +58,7 @@ pipeline {
         }
         stage('Free local space') {
             steps {
-                sh '/usr/local/bin/docker rmi -f '+registry+'-backend:latest'
-                sh '/usr/local/bin/docker rmi -f '+registry+'-frontend:latest'
+                sh 'docker rmi -f $(docker images -q)'
             }
         }
     }
