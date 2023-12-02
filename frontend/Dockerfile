@@ -4,7 +4,6 @@ WORKDIR '/brain_tumor_analysis'
 ADD . /brain_tumor_analysis
 
 COPY . .
-RUN apt update
 RUN apt install -y python3-pip
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
