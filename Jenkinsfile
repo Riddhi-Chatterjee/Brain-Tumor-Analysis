@@ -56,8 +56,8 @@ pipeline {
         }
         stage('Free local space') {
             steps {
-                sh '/usr/local/bin/docker rmi '+registry+'-backend:latest'
-                sh '/usr/local/bin/docker rmi '+registry+'-frontend:latest'
+                sh '/usr/local/bin/docker rmi -f '+registry+'-backend:latest'
+                sh '/usr/local/bin/docker rmi -f '+registry+'-frontend:latest'
             }
         }
     }
