@@ -81,8 +81,8 @@ pipeline {
                 ansiblePlaybook becomeUser: 'null',
                 colorized: true,
                 installation: 'Ansible',
-                inventory: 'inventory',
-                playbook: 'ansible-playbook.yml',
+                inventory: './inventory',
+                playbook: './ansible-playbook.yml',
                 sudoUser: 'null'
 			}
         }
