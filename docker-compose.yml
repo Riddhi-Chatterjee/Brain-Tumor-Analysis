@@ -1,0 +1,33 @@
+services:
+  bta-frontend:
+    image: riddhich/brain-tumor-analysis-frontend:latest
+    container_name: brain-tumor-analysis-frontend
+    # Keep stdin_open because we don't want this container to exit immediately which it
+    # otherwise would have because there's no foreground processes
+    stdin_open: true
+    ports:
+      - "5000:5000"
+    networks:
+      brain-tumor-analysis:
+        ipv4_address: 172.28.1.6
+
+  bta-backend:
+    image: riddhich/brain-tumor-analysis-backend:latest
+    container_name: brain-tumor-analysis-backend
+    ports:
+      - "6000:6000"
+    networks:
+      brain-tumor-analysis:
+        ipv4_address: 172.28.1.7
+    # Using Docker volume for persisting logs
+    # ./backend/logs refers to the path /home/backend/logs on the host machine
+    # and we're linking it to logs folder on the container machine where Morgan logger logs its output
+    volumes:
+      - ./backend/logs:/brain_tumor_analysis/logs/
+  
+networks:
+  brain-tumor-analysis:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.28.1.0/24

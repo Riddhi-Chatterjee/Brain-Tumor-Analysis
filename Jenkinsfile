@@ -75,5 +75,18 @@ pipeline {
                 sh '/usr/local/bin/docker rmi -f $(/usr/local/bin/docker images -q)'
             }
         }
+        stage('Deploy') {
+            steps {
+                script {
+                    sh 'export PATH="/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH"'
+                }
+                ansiblePlaybook becomeUser: 'null',
+                colorized: true,
+                installation: 'Ansible',
+                inventory: 'inventory',
+                playbook: 'ansible-playbook.yml',
+                sudoUser: 'null',
+			}
+        }
     }
 }
