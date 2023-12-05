@@ -83,7 +83,7 @@ pipeline {
             steps {
                 sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH'
                 sh 'ls -l /Users/riddhichatterjee/Library/Python/3.9/bin'
-                sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible --version'
+                sh '/Users/riddhichatterjee/opt/anaconda3/bin/python /Users/riddhichatterjee/Library/Python/3.9/bin/ansible --version'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
 			}
         }
