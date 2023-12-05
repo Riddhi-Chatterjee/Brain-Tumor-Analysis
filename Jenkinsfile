@@ -11,7 +11,7 @@ pipeline {
 
     tools {
         ansible 'ansible'
-        dockerCompose 'docker-compose'
+        dockerTool 'docker-compose'
     }
 
     stages {
