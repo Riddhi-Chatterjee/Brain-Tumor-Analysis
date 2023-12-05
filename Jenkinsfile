@@ -9,6 +9,10 @@ pipeline {
             dockerimage = ''
     }
 
+    tools {
+        ansible 'ansible'
+    }
+
     stages {
         stage('Git pull') {
             steps {
