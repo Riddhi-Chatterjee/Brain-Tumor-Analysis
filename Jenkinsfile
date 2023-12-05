@@ -83,8 +83,10 @@ pipeline {
         // }
         stage('Deploy') {
             steps {
+                sh 'curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
+                sh 'chmod +x /usr/local/bin/docker-compose'
                 sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH'
-                sh '/Users/riddhichatterjee/opt/anaconda3/bin/docker-compose --version'
+                sh '/usr/local/bin/docker-compose --version'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
 			}
         }
