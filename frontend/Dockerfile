@@ -1,4 +1,4 @@
-FROM linux/arm64/v8
+FROM --platform=linux/arm64/v8 node:alpine
 
 WORKDIR '/brain_tumor_analysis'
 ADD . /brain_tumor_analysis
