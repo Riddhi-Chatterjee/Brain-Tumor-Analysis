@@ -1,10 +1,9 @@
-FROM --platform=linux/arm64/v8 node:alpine
+FROM --platform=linux/arm64/v8 python:alpine
 
 WORKDIR '/brain_tumor_analysis'
 ADD . /brain_tumor_analysis
 
 COPY . .
-RUN apk add --no-cache python3 py3-pip
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 RUN python3 download_models.py
