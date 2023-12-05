@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu:20.04
+FROM linux/arm64/v8
 
 WORKDIR '/brain_tumor_analysis'
 ADD . /brain_tumor_analysis
