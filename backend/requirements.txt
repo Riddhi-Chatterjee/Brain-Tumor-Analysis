@@ -1,6 +1,6 @@
 chardet
 requests==2.31.0
-numpy==1.21.5
+numpy==1.22.0
 pandas==1.4.2
 torch==1.11.0
 torchvision==0.12.0
