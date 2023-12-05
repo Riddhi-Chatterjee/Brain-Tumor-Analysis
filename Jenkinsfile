@@ -82,7 +82,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH'
-                sh 'pip3 install ansible --user'
+                // sh 'pip3 install ansible --user'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible --version'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
 			}
