@@ -19,14 +19,14 @@ pipeline {
                 git url: 'https://github.com/Riddhi-Chatterjee/Brain-Tumor-Analysis.git', branch: 'main'
             }
         }
-        stage('Build') {
-            steps {
-                sh 'pip3 install --upgrade pip' //Upgrading pip3
-                sh 'pip3 install -r requirements.txt' //Installing the required libraries
-                sh '''cd backend
-                      python3 download_models.py''' //Downloading our models from google drive
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'pip3 install --upgrade pip' //Upgrading pip3
+        //         sh 'pip3 install -r requirements.txt' //Installing the required libraries
+        //         sh '''cd backend
+        //               python3 download_models.py''' //Downloading our models from google drive
+        //     }
+        // }
         // stage('Test') {
         //     steps {
         //         sh '''cd backend
@@ -81,8 +81,8 @@ pipeline {
         // }
         stage('Deploy') {
             steps {
+                sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible --version'
-                sh 'export PATH="/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH"'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
 			}
         }
