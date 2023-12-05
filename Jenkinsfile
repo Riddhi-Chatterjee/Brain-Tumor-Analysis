@@ -84,7 +84,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH'
-                sh 'brew'
+                sh 'apt-get update'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
 			}
         }
