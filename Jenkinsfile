@@ -7,11 +7,11 @@ pipeline {
             DOCKERHUB_CRED = credentials('CRED_DOCKER')
             registryCredential = 'CRED_DOCKER'
             dockerimage = ''
-            PATH = "/usr/local/bin:${env.PATH}"
     }
 
     tools {
         ansible 'ansible'
+        docker 'docker-compose'
     }
 
     stages {
