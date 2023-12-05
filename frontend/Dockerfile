@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64/v8 node:alpine
+FROM debian:bullseye-slim
 
 WORKDIR '/brain_tumor_analysis'
 ADD . /brain_tumor_analysis
