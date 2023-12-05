@@ -84,8 +84,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH'
-                sh 'chmod +x /usr/local/bin/docker-compose'
-                sh '/usr/local/bin/docker-compose --version'
+                sh '/usr/local/bin/docker-compoese --version'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
 			}
         }
