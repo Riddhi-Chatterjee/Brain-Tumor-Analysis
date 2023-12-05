@@ -1,7 +1,6 @@
 chardet
 requests
 numpy
-pandas
 torch
 torchvision
 Pillow

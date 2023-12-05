@@ -2,7 +2,6 @@ import unittest
 import os
 import random
 import numpy as np
-import pandas as pd
 import torch
 from torchvision import transforms
 from PIL import Image
