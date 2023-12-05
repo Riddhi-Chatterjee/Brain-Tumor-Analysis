@@ -1,8 +1,6 @@
 chardet
 requests
 numpy
-torch==1.11.0
-torchvision
 Pillow
 Flask
 gdown
