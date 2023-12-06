@@ -6,11 +6,6 @@
     ansible_python_interpreter: /Users/riddhichatterjee/opt/anaconda3/bin/python
 
   tasks:
-    - name: Copy Docker Compose file from host machine to remote host
-      copy:
-        src: ./docker-compose.yml
-        dest: ./
-
     # Pull the Docker images from Docker Hub
     - name: Pull the Docker images specifed in docker-compose
       shell: |
