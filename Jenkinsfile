@@ -7,7 +7,7 @@ pipeline {
             DOCKERHUB_CRED = credentials('CRED_DOCKER')
             registryCredential = 'CRED_DOCKER'
             dockerimage = ''
-            PATH = "/Users/riddhichatterjee/opt/anaconda3/bin/docker-compose:$PATH"
+            PATH = "/usr/local/bin:$PATH"
     }
 
     tools {
@@ -83,7 +83,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:/usr/local/bin:$PATH'
-                sh 'whereis docker-compose'
+                sh 'docker-compose up'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
 			}
         }
