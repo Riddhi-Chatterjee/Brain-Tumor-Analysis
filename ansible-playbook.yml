@@ -12,7 +12,7 @@
         /usr/local/bin/docker login -u "riddhich" -p "rocker@43893"
         cd /Users/riddhichatterjee/Semester7/SPE/Final-Project/Brain-Tumor-Analysis
         pwd
-        docker-compose pull
+        docker compose pull
 
     # Now we run the Docker containers
     # Detached mode is required, otherwise Jenkins build never exits
