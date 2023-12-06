@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64/v8 python:alpine
+FROM python:3.x-alpine
 
 WORKDIR '/brain_tumor_analysis'
 ADD . /brain_tumor_analysis
