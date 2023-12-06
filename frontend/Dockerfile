@@ -1,4 +1,4 @@
-FROM python:3.x-alpine
+FROM python:3.11.7-alpine
 
 WORKDIR '/brain_tumor_analysis'
 ADD . /brain_tumor_analysis
