@@ -76,8 +76,13 @@ pipeline {
         // }
         stage('Ansible Deploy') {
             steps {
-                sh 'docker-compose version'
+                ansiblePlaybook becomeUser: 'null',
+                colorized: true,
+                installation: 'Ansible',
+                inventory: 'inventory',
+                playbook: 'ansible-playbook.yml',
+                sudoUser: 'null',
             }
-		}
+        }
     }
 }
