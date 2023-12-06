@@ -3,16 +3,19 @@
   hosts: all
 
   vars:
-    ansible_python_interpreter: /Users/riddhichatterjee/opt/anaconda3/bin/python
+    ansible_python_interpreter: /usr/bin/python3
 
   tasks:
+
+    #Starting docker service
+    - name: Start docker service
+      service:
+        name: docker
+        state: started
+
     # Pull the Docker images from Docker Hub
     - name: Pull the Docker images specifed in docker-compose
-      shell: |
-        /usr/local/bin/docker login -u "riddhich" -p "rocker@43893"
-        cd /Users/riddhichatterjee/Semester7/SPE/Final-Project/Brain-Tumor-Analysis
-        pwd
-        docker compose pull
+      command: docker-compose pull
 
     # Now we run the Docker containers
     # Detached mode is required, otherwise Jenkins build never exits
