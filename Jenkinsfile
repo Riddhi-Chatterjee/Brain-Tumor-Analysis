@@ -80,11 +80,15 @@ pipeline {
         //         sh '/usr/local/bin/docker rmi -f $(/usr/local/bin/docker images -q)'
         //     }
         // }
-        stage('Deploy') {
+        stage('Ansible Deploy') {
             steps {
-                sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH'
-                sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
-			}
-        }
+                ansiblePlaybook becomeUser: 'null',
+                colorized: true,
+                installation: 'Ansible',
+                inventory: 'inventory',
+                playbook: 'ansible-playbook.yml',
+                sudoUser: 'null',
+            }
+		}
     }
 }
