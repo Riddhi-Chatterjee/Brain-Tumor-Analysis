@@ -7,11 +7,6 @@ pipeline {
             // DOCKERHUB_CRED = credentials('CRED_DOCKER')
             // registryCredential = 'CRED_DOCKER'
             dockerimage = ''
-            PATH = "/Users/riddhichatterjee/opt/anaconda3/bin:$PATH"
-    }
-
-    tools {
-        ansible 'ansible'
     }
 
     stages {
@@ -82,7 +77,7 @@ pipeline {
         // }
         stage('Ansible Deploy') {
             steps {
-                sh '/Users/riddhichatterjee/opt/anaconda3/bin/docker-compose version'
+                sh 'docker-compose version'
             }
 		}
     }
