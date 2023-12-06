@@ -82,7 +82,7 @@ pipeline {
         // }
         stage('Ansible Deploy') {
             steps {
-                sh '/usr/local/bin/docker compose version'
+                sh '/Users/riddhichatterjee/opt/anaconda3/bin/docker-compose version'
             }
 		}
     }
