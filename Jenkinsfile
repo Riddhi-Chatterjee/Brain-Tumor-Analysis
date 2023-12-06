@@ -86,7 +86,7 @@ pipeline {
                 colorized: true,
                 installation: 'Ansible',
                 inventory: 'inventory',
-                playbook: 'ansible-playbook.yml',
+                playbook: '/Users/riddhichatterjee/Semester7/SPE/Final-Project/Brain-Tumor-Analysis/ansible-playbook.yml',
                 sudoUser: 'null'
             }
 		}
