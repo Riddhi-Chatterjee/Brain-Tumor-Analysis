@@ -85,7 +85,7 @@ pipeline {
                 sh 'export PATH="/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH"'
                 ansiblePlaybook becomeUser: 'null',
                 colorized: true,
-                installation: 'Ansible',
+                installation: '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook',
                 inventory: 'inventory',
                 playbook: '/Users/riddhichatterjee/Semester7/SPE/Final-Project/Brain-Tumor-Analysis/ansible-playbook.yml',
                 sudoUser: 'null'
