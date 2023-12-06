@@ -82,13 +82,7 @@ pipeline {
         // }
         stage('Ansible Deploy') {
             steps {
-                sh 'export PATH="/Users/riddhichatterjee/Library/Python/3.9/bin:$PATH"'
-                ansiblePlaybook becomeUser: 'null',
-                colorized: true,
-                installation: '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook',
-                inventory: 'inventory',
-                playbook: '/Users/riddhichatterjee/Semester7/SPE/Final-Project/Brain-Tumor-Analysis/ansible-playbook.yml',
-                sudoUser: 'null'
+                sh 'docker compose version'
             }
 		}
     }
