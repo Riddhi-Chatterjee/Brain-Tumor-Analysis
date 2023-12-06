@@ -13,7 +13,10 @@
 
     # Pull the Docker images from Docker Hub
     - name: Pull the Docker images specifed in docker-compose
-      command: docker-compose pull
+      shell: |
+        /usr/local/bin/docker login -u "riddhich" -p "rocker@43893"
+        cd /Users/riddhichatterjee/Semester7/SPE/Final-Project/Brain-Tumor-Analysis
+        docker-compose pull
 
     # Now we run the Docker containers
     # Detached mode is required, otherwise Jenkins build never exits
