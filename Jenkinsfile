@@ -82,7 +82,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'export PATH=/Users/riddhichatterjee/Library/Python/3.9/bin:/usr/local/bin:$PATH'
-                sh '/usr/local/bin/docker-compose --version'
+                sh 'whereis docker-compose'
                 sh '/Users/riddhichatterjee/Library/Python/3.9/bin/ansible-playbook ./ansible-playbook.yml -i ./inventory'
 			}
         }
