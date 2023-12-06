@@ -4,8 +4,8 @@ pipeline {
     environment {
             CI = 'true'
             registry = 'riddhich/brain-tumor-analysis'
-            DOCKERHUB_CRED = credentials('CRED_DOCKER')
-            registryCredential = 'CRED_DOCKER'
+            // DOCKERHUB_CRED = credentials('CRED_DOCKER')
+            // registryCredential = 'CRED_DOCKER'
             dockerimage = ''
             PATH = "/Users/riddhichatterjee/opt/anaconda3/bin:$PATH"
     }
