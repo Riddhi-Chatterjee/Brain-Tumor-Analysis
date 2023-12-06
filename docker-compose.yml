@@ -1,6 +1,6 @@
 services:
   bta-frontend:
-    image: riddhich/brain-tumor-analysis-frontend:latest
+    image: riddhich/calculator:latest
     container_name: brain-tumor-analysis-frontend
     # Keep stdin_open because we don't want this container to exit immediately which it
     # otherwise would have because there's no foreground processes
@@ -12,7 +12,7 @@ services:
         ipv4_address: 172.28.1.6
 
   bta-backend:
-    image: riddhich/brain-tumor-analysis-backend:latest
+    image: riddhich/calculator:latest
     container_name: brain-tumor-analysis-backend
     ports:
       - "6000:6000"
