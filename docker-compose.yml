@@ -4,7 +4,7 @@ services:
     container_name: brain-tumor-analysis-frontend
     # Keep stdin_open because we don't want this container to exit immediately which it
     # otherwise would have because there's no foreground processes
-    #stdin_open: true
+    stdin_open: true
     ports:
       - "5000:5000"
 
@@ -13,7 +13,7 @@ services:
     container_name: brain-tumor-analysis-backend
     # Keep stdin_open because we don't want this container to exit immediately which it
     # otherwise would have because there's no foreground processes
-    #stdin_open: true
+    stdin_open: true
     ports:
       - "6000:6000"
     # Using Docker volume for persisting logs

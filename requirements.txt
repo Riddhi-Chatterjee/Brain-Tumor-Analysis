@@ -4,3 +4,4 @@ numpy
 Pillow
 Flask
 gdown
+watchdog==3.0.0
