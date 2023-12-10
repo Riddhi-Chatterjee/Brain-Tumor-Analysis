@@ -1,0 +1,5 @@
+2023-12-10 19:37:33,900 Prediction for MRI image <FileStorage: 'Te-gl_0012.jpg' ('image/jpeg')>:  Glioma
+2023-12-10 19:37:51,357 Prediction for MRI image <FileStorage: 'Te-me_0012.jpg' ('image/jpeg')>:  Meningioma
+2023-12-10 19:38:02,201 Prediction for MRI image <FileStorage: 'Te-pi_0013.jpg' ('image/jpeg')>:  Pituitary
+2023-12-10 19:38:15,765 Prediction for MRI image <FileStorage: 'Te-no_0013.jpg' ('image/jpeg')>:  No tumor
+2023-12-10 19:39:19,509 Prediction for MRI image <FileStorage: 'Te-no_0013.jpg' ('image/jpeg')>:  No tumor
