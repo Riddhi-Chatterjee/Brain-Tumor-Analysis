@@ -4,7 +4,7 @@ import logging
 
 app = Flask(__name__)
 
-log_file_path = '../logs/log_output.log'
+log_file_path = './logs/log_output.log'
 
 formatter = logging.Formatter('%(asctime)s %(message)s')  # Setting the desired log format
 
