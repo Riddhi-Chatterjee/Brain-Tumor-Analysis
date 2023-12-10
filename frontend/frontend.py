@@ -33,7 +33,7 @@ def predict_image_file():
             image_file = request.files['file']
 
             # Sending a request to your backend for prediction
-            response = requests.post("http://127.0.0.1:6000/predict", files={'file': image_file})
+            response = requests.post("http://127.0.0.1:3500/predict", files={'file': image_file})
 
             if response.status_code == 200:
                 # Getting the prediction from the response
@@ -54,4 +54,4 @@ def predict_image_file():
         return render_template("result.html", err=error)
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(port=3000, debug=True)
