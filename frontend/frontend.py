@@ -49,7 +49,7 @@ def predict_image_file():
                 return render_template("result.html", err=error)
 
     except Exception as e:
-        error = "Error: File can't be processed"
+        error = "Error: File can't be processed."
         app.logger.info("Prediction for MRI image %s:  %s",str(image_file), error)
         return render_template("result.html", err=error)
 
