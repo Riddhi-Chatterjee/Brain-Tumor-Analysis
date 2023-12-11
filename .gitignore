@@ -1,1 +1,5 @@
 backend/Brain_Tumor_Classification/vgg16.pth
+elasticsearch-8.11.2
+elasticsearch-8.11.2-linux-x86_64.tar.gz
+elasticsearch-8.11.2-linux-x86_64.tar.gz.sha512
+logstash-8.11.2
