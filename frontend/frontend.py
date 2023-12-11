@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import requests
 import logging
+import sys
 
 app = Flask(__name__)
 
@@ -29,11 +30,14 @@ def predict_image_file():
     image_file = "NULL"
     try:
         if request.method == 'POST':
-            # Assuming you have a form with a file input named 'file'
             image_file = request.files['file']
 
-            # Sending a request to your backend for prediction
-            response = requests.post("http://bta-backend:3500/predict", files={'file': image_file})
+            # Sending a request to our backend for prediction
+            response = ""
+            if len(sys.argv) == 2 and sys.argv[1] == 'no_cont':
+                response = requests.post("http://127.0.0.1:3500/predict", files={'file': image_file})
+            else:
+                response = requests.post("http://bta-backend:3500/predict", files={'file': image_file})
 
             if response.status_code == 200:
                 # Getting the prediction from the response
