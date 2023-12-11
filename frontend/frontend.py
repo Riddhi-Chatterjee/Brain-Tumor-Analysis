@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 import requests
 import logging
 import sys
@@ -56,6 +56,16 @@ def predict_image_file():
         error = "Error: File can't be processed."
         app.logger.info("Prediction for MRI image %s:  %s",str(image_file), error)
         return render_template("result.html", err=error)
+    
+@app.route('/download_file')
+def download_file():
+    # Specifying the path to the log file
+    file_path = './logs/log_output.log'
+
+    # Setting the filename as it will appear on the user's machine
+    filename = 'log_output.log'
+
+    return send_file(file_path, as_attachment=True, download_name=filename)
 
 if __name__ == "__main__":
     app.run(port=3000, debug=True, host='0.0.0.0')

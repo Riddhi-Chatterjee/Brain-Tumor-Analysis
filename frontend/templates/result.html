@@ -11,8 +11,18 @@ Prediction - Brain Tumor Analysis
     </header>
 
     <div class="Brain-Tumor-Classification text-center">
+
         {% if predictions %}
-            <h1 class="display-4 font-weight-bold" style="color:black; font-size:29px;">{{ predictions }}</h1>
+            <div class="row">
+                <div class = "col" style = "position:relative; left:285px;">
+                    <h1 class="display-4 font-weight-bold" style="color:black; font-size:29px;">{{ predictions }}</h1>
+                </div>
+                <div class="col" style="left:100px; float:right">
+                    <div class="download-button">
+                        <a href="{{ url_for('download_file') }}" class="btn btn-warning" role="button" download>Download Logs</a>
+                    </div>
+                </div>
+            </div>
 
             {% if "glioma" in predictions %}
                 <!-- Display information specific to glioma -->
@@ -116,7 +126,16 @@ Prediction - Brain Tumor Analysis
             {% endif %}
 
         {% else %}
-            <h1 class="display-4 font-weight-bold" style="color:black; font-size:29px;">{{ err }}</h1>
+            <div class="row">
+                <div class = "col" style = "position:relative; left:285px;">
+                    <h1 class="display-4 font-weight-bold" style="color:black; font-size:29px;">{{ err }}</h1>
+                </div>
+                <div class="col" style="left:100px; float:right">
+                    <div class="download-button">
+                        <a href="{{ url_for('download_file') }}" class="btn btn-warning" role="button" download>Download Logs</a>
+                    </div>
+                </div>
+            </div>
         {% endif %}
     </div>
 </div>
