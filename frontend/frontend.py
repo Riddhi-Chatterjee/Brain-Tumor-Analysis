@@ -43,18 +43,18 @@ def predict_image_file():
                 # Getting the prediction from the response
                 prediction = response.json().get('prediction', 'Error: No prediction received')
                 if str(prediction) in log_dict.keys():
-                    app.logger.info("Prediction for MRI image %s:  %s",str(image_file), log_dict[str(prediction)])
+                    app.logger.info("Prediction for MRI image %s:  %s",str(image_file), log_dict[str(prediction)].replace(" ", "_"))
                 else:
-                    app.logger.info("Prediction for MRI image %s:  %s",str(image_file), str(prediction))
+                    app.logger.info("Prediction for MRI image %s:  %s",str(image_file), str(prediction).replace(" ", "_"))
                 return render_template("result.html", predictions=str(prediction))
             else:
                 error = "Error in prediction request. Status code: {}".format(response.status_code)
-                app.logger.info("Prediction for MRI image %s:  %s",str(image_file), error)
+                app.logger.info("Prediction for MRI image %s:  %s",str(image_file), error.replace(" ", "_"))
                 return render_template("result.html", err=error)
 
     except Exception as e:
         error = "Error: File can't be processed."
-        app.logger.info("Prediction for MRI image %s:  %s",str(image_file), error)
+        app.logger.info("Prediction for MRI image %s:  %s",str(image_file), error.replace(" ", "_"))
         return render_template("result.html", err=error)
     
 @app.route('/download_file')
