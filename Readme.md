@@ -1,1 +1,5 @@
-# Brain Tumor Analysis
+![](readme_helper/1.png)
+![](readme_helper/2.png)
+![](readme_helper/3.png)
+![](readme_helper/4.png)
+![](readme_helper/5.png)
