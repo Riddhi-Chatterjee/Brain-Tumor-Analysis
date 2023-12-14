@@ -1,4 +1,4 @@
-![](readme_helper/1.png)
+![](readme_helper/1.jpg)
 ![](readme_helper/2.png)
 ![](readme_helper/3.png)
 ![](readme_helper/4.png)
