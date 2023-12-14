@@ -1,1 +1,5 @@
-![](https://en.wikipedia.org/wiki/File:Anoures.jpg)
+![1](https://github.com/Riddhi-Chatterjee/Brain-Tumor-Analysis/assets/79003900/4b3adf5e-33d1-45a1-9521-7141df6c17ce)
+![2](https://github.com/Riddhi-Chatterjee/Brain-Tumor-Analysis/assets/79003900/0b319b65-b5cb-4ddb-aa79-6cddb8ba2846)
+![3](https://github.com/Riddhi-Chatterjee/Brain-Tumor-Analysis/assets/79003900/190f4e70-7045-4e8f-a8bf-faa53ed2ef46)
+![4](https://github.com/Riddhi-Chatterjee/Brain-Tumor-Analysis/assets/79003900/35cbd85b-4321-4f19-bd92-cdd3621876df)
+![5](https://github.com/Riddhi-Chatterjee/Brain-Tumor-Analysis/assets/79003900/67381c42-7aa3-44d6-928d-a8d556fa0973)
